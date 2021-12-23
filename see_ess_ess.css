@@ -1,0 +1,29 @@
+
+h1 {
+  color: white;
+  text-align: center;
+}
+p {
+    color: white;
+    text-align: center;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+body {
+    /* background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); */
+    background-image: url("notw_wallpaper_1.jpeg");
+    background-size: cover;
+    text-align: center;
+    margin-bottom: auto;
+}
+
+div {
+    text-align: left;
+    background: white;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 2%;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: none;
+}
