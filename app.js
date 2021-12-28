@@ -97,16 +97,25 @@ function get_text_from_search_word(word, book_json, buffer_paragraphs){
     return raw_text
 }
 
-
-var selected_book = document.getElementById("book_name_selector").value
 const book_json_mapping = {"name_of_the_wind" : notw_json, "wise_mans_fear": wmf_json}
-var book_json = book_json_mapping[selected_book]
+let book_json;
+var book_selector = document.getElementById("book_name_selector")
+book_selector.addEventListener("change", function(){
+    selected_book = book_selector.value
+    book_json = book_json_mapping[selected_book]
+    console.log(selected_book)
+    console.log(book_json)
+})
+
+
+
 
 var search_word = document.getElementById("search_word");
 var buffer_paragraphs = document.getElementById("buffer_paragraphs");
 var search_button = document.getElementById("search_button")
 
 search_button.addEventListener("click", function () {
+    console.log(selected_book)
     var text = get_text_from_search_word(search_word.value, book_json, buffer_paragraphs.value)
     document.getElementById("book_text_div").innerHTML = text
     ///unhide the div since it starts out hidden
