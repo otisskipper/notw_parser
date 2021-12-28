@@ -105,6 +105,7 @@ book_selector.addEventListener("change", function(){
     book_json = book_json_mapping[selected_book]
     console.log(selected_book)
     console.log(book_json)
+    console.log('test')
 })
 
 
