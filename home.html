@@ -7,15 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>title</title>
     <script type="text/javascript" src="notw.json"></script>
+    <script type="text/javascript" src="wmf.json"></script>
     <script type="text/javascript" src="app.js" defer></script>
     <link rel="stylesheet" href="see_ess_ess.css">
 </head>
 <body>
         <h1>This Is Slightly Better Than a Scriv</h1>
         <p>Use this tool to search for paragraphs related to a certain word in Name of the Wind. The "buffer paragraphs" will grab x paragraphs before & after where the word is for context. It's basically a fancy ctrl+f</p>
+        <p for="book-name">Choose a book:</p>
+        <select id="book_name_selector">
+            <option value="name_of_the_wind">Name Of The Wind</option>
+            <option value="wise_mans_fear">Wise Man's Fear</option>
+        </select>
+        <p></p>
         <input type="text" id="search_word" placeholder="Search Word" />
         <input type="number" id="buffer_paragraphs" placeholder="Buffer Paragraphs" />
-        <button>Search!</button>  
+        <button id = "search_button"> Search!</button>  
         <div id="book_text_div"></div>
 </body>
 </html>

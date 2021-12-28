@@ -1,6 +1,7 @@
 
 // IDK how the fuck this works but including the notw.json file in the <src> in the index.html lets me load this :shrug:
 var notw_json;
+var wmf_json;
 // console.log((notw_json));
 
 // Creates a dictionary of each chapter & the relevant paragraph numbers that contain the word we care about
@@ -56,7 +57,7 @@ function get_buffer_paragraphs(matching_chapter_par_dict, book_json, paragraph_b
         // javascript will treat the numbers as strings, gotta do this so 40 comes before 100
         var sorted_chapters = filtered_chapters.sort(function (a, b) {  return a - b;  })
 
-        //only log if array has something in it
+        //only store if array has something in it
         if (sorted_chapters.length > 0){
             buffer_paragraphs[chapter] = sorted_chapters
         }
@@ -89,23 +90,25 @@ function prettify_paragraph_text_dict(paragraph_text_dict){
 }
 
 function get_text_from_search_word(word, book_json, buffer_paragraphs){
-    var matching_chapter_par_dict = find_chapter_paragraphs_of_word(word, notw_json)
+    var matching_chapter_par_dict = find_chapter_paragraphs_of_word(word, book_json)
     var buffer_paragraphs = get_buffer_paragraphs(matching_chapter_par_dict, book_json, buffer_paragraphs)
     var paragraph_text_dict = get_paragraph_text_dict(buffer_paragraphs, book_json)
     raw_text = prettify_paragraph_text_dict(paragraph_text_dict)
     return raw_text
 }
 
+
+var selected_book = document.getElementById("book_name_selector").value
+const book_json_mapping = {"name_of_the_wind" : notw_json, "wise_mans_fear": wmf_json}
+var book_json = book_json_mapping[selected_book]
+
 var search_word = document.getElementById("search_word");
 var buffer_paragraphs = document.getElementById("buffer_paragraphs");
-var button = document.querySelector("button");
+var search_button = document.getElementById("search_button")
 
-
-
-button.addEventListener("click", function () {
-    var text = get_text_from_search_word(search_word.value, notw_json, buffer_paragraphs.value)
+search_button.addEventListener("click", function () {
+    var text = get_text_from_search_word(search_word.value, book_json, buffer_paragraphs.value)
     document.getElementById("book_text_div").innerHTML = text
-    ///unhide the div
+    ///unhide the div since it starts out hidden
     document.getElementById("book_text_div").style.display = "block";
-
 });
